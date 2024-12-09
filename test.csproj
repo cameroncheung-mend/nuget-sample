@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RootNamespace></RootNamespace>
+    <IsPackable>False</IsPackable>
+    <NoWarn>CS0649;CS0169</NoWarn>
+    <NukeTelemetryVersion>1</NukeTelemetryVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" />
+    <PackageReference Include="Nuke.Common" />
+    <PackageReference Include="Serilog" VersionOverride="4.0.2" />
+    <PackageReference Include="Serilog.Sinks.File" VersionOverride="6.0.0" />
+    <PackageReference Include="SharpCifs.Std" />
+    <PackageReference Include="WebConfigTransformRunner" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <NukeSpecificationFiles Include="**\*.json" Exclude="bin\**;obj\**" />
+    <NukeExternalFiles Include="**\*.*.ext" Exclude="bin\**;obj\**" />
+    <NukeSpecificationFiles Remove=".config\dotnet-tools.json" />
+    <Compile Include="..\External\SynergyBaseball\build\AmazonS3Uploader.cs" Link="AmazonS3Uploader.cs" />
+    <Compile Include="..\External\SynergyBaseball\build\Build.DeployCleanup.cs" Link="Build.DeployCleanup.cs" />
+    <Compile Include="..\External\SynergyBaseball\build\Build.Mac.cs" Link="Build.Mac.cs" />
+    <Compile Include="..\External\SynergyBaseball\build\Build.Mac.Notarization.cs" Link="Build.Mac.Notarization.cs" />
+    <Compile Include="..\External\SynergyBaseball\build\BuildParameters.Security.cs" Link="BuildParameters.Security.cs" />
+    <Compile Include="..\External\SynergyBaseball\build\NativeMethods.cs" Link="NativeMethods.cs" />
+    <Compile Include="..\External\SynergyBaseball\build\ResourceUpdater.cs" Link="ResourceUpdater.cs" />
+
+    <!-- Common build related files -->
+  </ItemGroup>
+
+</Project>
